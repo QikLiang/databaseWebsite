@@ -10,7 +10,7 @@
 	$commands = array(
 		'echo $PWD',
 		'whoami',
-		'/usr/bin/git pull origin master 2->&1',
+		'/usr/bin/git pull origin master 2>&1',
 		'git status',
 	);
 	// Run the commands for output
