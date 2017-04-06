@@ -1,2 +1,2 @@
 <?php
-  exec("git pull origin master");
+  exec("cd /var/www && git pull origin master");
