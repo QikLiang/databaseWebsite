@@ -4,9 +4,9 @@ include '../inc/dbinfo.inc';
 
 $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 if ($conn->connect_error){
-	echo '<html><body>'
+	echo '<html><body>';
 	echo 'Error: unable to connect to server, please try again.';
-	echo '</body></html>'
+	echo '</body></html>';
 	return;
 }
 
