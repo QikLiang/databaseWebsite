@@ -1,6 +1,6 @@
 <?php
 //get username and password to database
-include '../inc/dbinfo.inc';
+include '/var/www/inc/dbinfo.inc';
 
 $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 if ($conn->connect_error){
