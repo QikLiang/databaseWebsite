@@ -9,7 +9,7 @@
 	// The commands
 	$commands = array(
 		'echo $PWD',
-		'whoami',
+		'id',
 		'/usr/bin/git pull origin master 2>&1',
 		'git status',
 	);
