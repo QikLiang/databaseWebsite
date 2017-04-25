@@ -27,10 +27,6 @@ $conn->close();
 </head>
 <body>
 	<h1>
-		//<?=json_encode($data)?>
 	</h1>
-	//<script charset="utf-8">
-		//var data = JSON.parse(<?=json_encode($data)?>);
-	//</script>
 </body>
 </html>
