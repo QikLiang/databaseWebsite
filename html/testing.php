@@ -11,12 +11,11 @@ if ($conn->connect_error){
 }
 
 $query = $conn->query('select * from location');
-/*
 $data = [];
 while($row = $query->fetch_assoc()){
-	array_push($data, row);
+	array_push($data, $row);
 }
- */
+
 $conn->close();
 ?>
 
@@ -26,7 +25,12 @@ $conn->close();
 	<title>Testing PHP</title>
 </head>
 <body>
-	<h1>
-	</h1>
+	<script charset="utf-8">
+		var data = JSON.parse(<?=json_encode($data)?>);
+		var len = data.length;
+		for(var i=0; i<len; i++){
+			
+		}
+	</script>
 </body>
 </html>
