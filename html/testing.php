@@ -7,7 +7,7 @@ if ($conn->connect_error){
 	echo '<html><body>'
 	echo 'Error: unable to connect to server, please try again.';
 	echo '</body></html>'
-	exit();
+	return;
 }
 
 $query = $conn->query('select * from location');
