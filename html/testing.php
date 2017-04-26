@@ -25,7 +25,7 @@ $conn->close();
 	<title>Testing PHP</title>
 </head>
 <body>
-	<img src="./DBProject_Background.png" id="map" display=none>
+	<img src="./DBProject_Background.png" id="map" style="display:none;">
 	<canvas id="graphics"></canvas>
 	<script charset="utf-8">
 		var canvas = document.getElementById("graphics").getContext("2d");
@@ -42,4 +42,4 @@ $conn->close();
 		}
 	</script>
 </body>
-</html>
+</html>"
