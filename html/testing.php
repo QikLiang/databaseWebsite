@@ -26,11 +26,11 @@ $conn->close();
 </head>
 <body>
 	<img src="./DBProject_Background.png" id="map" style="display:none;">
-	<canvas id="graphics" style="width:1000; height:1000;"></canvas>
+	<canvas id="graphics" width="1500" height="1000"></canvas>
 	<script charset="utf-8">
 		var canvas = document.getElementById("graphics").getContext("2d");
 		var map = document.getElementById("map");
-		canvas.drawImage(map, 0, 0, 1000, 1000);
+		canvas.drawImage(map, 0, 0, 2000, 1000);
 		var body = document.getElementsByTagName("body")[0];
 		var data = JSON.parse('<?=json_encode($data)?>');
 		var len = data.length;
