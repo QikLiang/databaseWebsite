@@ -30,7 +30,7 @@ $conn->close();
 	<script charset="utf-8">
 		var canvas = document.getElementById("graphics").getContext("2d");
 		var map = document.getElementById("map");
-		canvas.drawImage(img, 100, 100);
+		canvas.drawImage(map, 100, 100);
 		var body = document.getElementsByTagName("body")[0];
 		var data = JSON.parse('<?=json_encode($data)?>');
 		var len = data.length;
@@ -42,4 +42,4 @@ $conn->close();
 		}
 	</script>
 </body>
-</html>"
+</html>
