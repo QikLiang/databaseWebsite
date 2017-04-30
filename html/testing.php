@@ -31,7 +31,7 @@ $conn->close();
 		var map = new Image();
 		map.onload = function(){
 			canvas.drawImage(map, 0, 0, 2000, 1000);
-			draw(canvas);
+			drawCircle(canvas, 500, 500, 200);
 		}
 		map.src = "./DBProject_Background.png";
 
@@ -45,18 +45,13 @@ $conn->close();
 			body.appendChild(pTag);
 		}
 
-		function draw(canvas){
-			var x = 500,
-				y=500,
-				innerRadius = 30,
-				outerRadius = 50;
-
-			var grad = canvas.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
+		function drawCircle(canvas, x, y, radius){
+			var grad = canvas.createRadialGradient(x, y, 0, x, y, radius);
 			grad.addColorStop(0, "red");
 			grad.addColorStop(1, "transparent");
 
 			canvas.fillStyle = grad;
-			canvas.arc(500, 500, 50, 0, 2*Math.PI);
+			canvas.arc(500, 500, radius, 0, 2*Math.PI);
 			canvas.fill();
 
 		}
