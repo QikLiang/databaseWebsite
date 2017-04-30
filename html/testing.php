@@ -31,8 +31,10 @@ $conn->close();
 		var map = new Image();
 		map.onload = function(){
 			canvas.drawImage(map, 0, 0, 2000, 1000);
+			draw(canvas);
 		}
 		map.src = "./DBProject_Background.png";
+
 		var body = document.getElementsByTagName("body")[0];
 		var data = JSON.parse('<?=json_encode($data)?>');
 		var len = data.length;
@@ -41,6 +43,13 @@ $conn->close();
 			var text = document.createTextNode(JSON.stringify(data[i]));
 			pTag.appendChild(text);
 			body.appendChild(pTag);
+		}
+
+		function draw(canvas){
+			canvas.fillStyle = 'rgba(255, 0, 0, 0.5)';
+			canvas.fillRect(50, 50, 300, 300);
+			canvas.fill();
+
 		}
 	</script>
 </body>
