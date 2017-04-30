@@ -56,7 +56,7 @@ $conn->close();
 			grad.addColorStop(1, "transparent");
 
 			canvas.fillStyle = grad;
-			canvas.arc(500, 500, 50, 2*Path.PI);
+			canvas.arc(500, 500, 50, 2*Math.PI);
 			canvas.fill();
 
 		}
