@@ -2,19 +2,10 @@
 	<img src="./DBProject_Background.png" alt="This is a map">
 	<body>
 	
-DateTime start = DateTime.ParseExact("08:00", "HH:mm", null);
-                //Set the End Time Value
-                DateTime end = DateTime.ParseExact("18:00", "HH:mm", null);
-                //Set the interval time 
-                int interval = 30;
-                //List to hold the values of intervals
-                List<string> lstTimeIntervals = new List<string>();
-                //Populate the list with 30 minutes interval values
-                for (DateTime i = start; i <= end; i = i.AddMinutes(interval))
-                    lstTimeIntervals.Add(i.ToString("HH:mm tt"));
-                //Assign the list to datasource of dropdownlist
-                DropDownList1.DataSource = lstTimeIntervals;
-                //Databind the dropdownlist
-                DropDownList1.DataBind();
+	<select>
+		<option value ="time">0000</option>
+		<option value ="time">0030</option>
+		</select>
+		
 	</body>
 </html>
