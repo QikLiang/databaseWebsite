@@ -26,6 +26,13 @@ $conn->close();
 </head>
 <body>
 	<canvas id="graphics" width="2000" height="1000"></canvas>
+
+	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+	From: <input type="text" name="from">
+	To: <input type="text" name="to">
+	<input type="submit" name="submit" value="Submit">
+	</form>
+
 	<script charset="utf-8">
 		var canvas = document.getElementById("graphics").getContext("2d");
 		var map = new Image();
