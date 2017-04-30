@@ -46,8 +46,17 @@ $conn->close();
 		}
 
 		function draw(canvas){
-			canvas.fillStyle = 'rgba(255, 0, 0, 0.5)';
-			canvas.fillRect(50, 50, 300, 300);
+			var x = 500,
+				y=500,
+				innerRadius = 30,
+				outerRadius = 50;
+
+			var grad = canvas.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
+			grad.addColorStop(0, "red");
+			grad.addColorStop(1, "transparent");
+
+			canvas.fillStyle = grad;
+			canvas.arc(500, 500, 50, 2*Path.PI);
 			canvas.fill();
 
 		}
