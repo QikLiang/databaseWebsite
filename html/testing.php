@@ -28,41 +28,6 @@ $conn->close();
 	<canvas id="graphics" width="2000" height="1000"></canvas>
 
 	<form method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-	From: <input type="text" name="from">
-	To: <input type="text" name="to">
-	<input type="submit" name="submit" value="Submit">
-	</form>
-
-	<script charset="utf-8">
-		var canvas = document.getElementById("graphics").getContext("2d");
-		var map = new Image();
-		map.onload = function(){
-			canvas.drawImage(map, 0, 0, 2000, 1000);
-			drawCircle(canvas, 500, 500, 200);
-		}
-		map.src = "./DBProject_Background.png";
-
-		var body = document.getElementsByTagName("body")[0];
-		var data = JSON.parse('<?=json_encode($data)?>');
-		var len = data.length;
-		for(var i=0; i<len; i++){
-			var pTag = document.createElement("p");
-			var text = document.createTextNode(JSON.stringify(data[i]));
-			pTag.appendChild(text);
-			body.appendChild(pTag);
-		}
-
-		function drawCircle(canvas, x, y, radius){
-			var grad = canvas.createRadialGradient(x, y, 0, x, y, radius);
-			grad.addColorStop(0, "red");
-			grad.addColorStop(1, "transparent");
-
-			canvas.fillStyle = grad;
-			canvas.arc(500, 500, radius, 0, 2*Math.PI);
-			canvas.fill();
-
-		}
-	</script>
 	
 	Select start time:  
 	<select>
@@ -170,5 +135,47 @@ $conn->close();
 		<option value = "2330">2330</option>
 
 		</select>
+		
+		
+		
+		
+		
+		
+		
+	<input type="submit" name="submit" value="Submit">
+	</form>
+
+	<script charset="utf-8">
+		var canvas = document.getElementById("graphics").getContext("2d");
+		var map = new Image();
+		map.onload = function(){
+			canvas.drawImage(map, 0, 0, 2000, 1000);
+			drawCircle(canvas, 500, 500, 200);
+		}
+		map.src = "./DBProject_Background.png";
+
+		var body = document.getElementsByTagName("body")[0];
+		var data = JSON.parse('<?=json_encode($data)?>');
+		var len = data.length;
+		for(var i=0; i<len; i++){
+			var pTag = document.createElement("p");
+			var text = document.createTextNode(JSON.stringify(data[i]));
+			pTag.appendChild(text);
+			body.appendChild(pTag);
+		}
+
+		function drawCircle(canvas, x, y, radius){
+			var grad = canvas.createRadialGradient(x, y, 0, x, y, radius);
+			grad.addColorStop(0, "red");
+			grad.addColorStop(1, "transparent");
+
+			canvas.fillStyle = grad;
+			canvas.arc(500, 500, radius, 0, 2*Math.PI);
+			canvas.fill();
+
+		}
+	</script>
+	
+	
 </body>
 </html>
