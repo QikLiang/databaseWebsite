@@ -26,7 +26,7 @@ $conn->close();
 </head>
 <body>
 	<img src="./DBProject_Background.png" id="map" style="display:none;">
-	<canvas id="graphics" width="1500" height="1000"></canvas>
+	<canvas id="graphics" width="2000" height="1000"></canvas>
 	<script charset="utf-8">
 		var canvas = document.getElementById("graphics").getContext("2d");
 		var map = document.getElementById("map");
