@@ -25,12 +25,14 @@ $conn->close();
 	<title>Testing PHP</title>
 </head>
 <body>
-	<img src="./DBProject_Background.png" id="map" style="display:none;">
 	<canvas id="graphics" width="2000" height="1000"></canvas>
 	<script charset="utf-8">
 		var canvas = document.getElementById("graphics").getContext("2d");
-		var map = document.getElementById("map");
-		canvas.drawImage(map, 0, 0, 2000, 1000);
+		var map = new Image();
+		map.onload = function(){
+			canvas.drawImage(map, 0, 0, 2000, 1000);
+		}
+		map.src = "./DBProject_Background.png";
 		var body = document.getElementsByTagName("body")[0];
 		var data = JSON.parse('<?=json_encode($data)?>');
 		var len = data.length;
