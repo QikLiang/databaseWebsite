@@ -10,6 +10,19 @@ if ($conn->connect_error){
 	return;
 }
 
+function sanitize($text){
+	$text = trim($text);
+	$text = stripslashes($text);
+	$text = htmlspecialchars($text);
+	return $text;
+}
+
+$from = sanitize($_GET["from"]);
+$to = sanitize($_GET["to"]);
+$sql = "";
+if ( preg_match('/\d{4}/',$from) && preg_match('/\d{4}/',$to) ){
+}
+
 $query = $conn->query('select * from location');
 $data = [];
 while($row = $query->fetch_assoc()){
