@@ -30,7 +30,7 @@ $conn->close();
 	<form method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 	
 	Select start time:  
-	<select>
+	<select name="from">
 		<option value = "0000">0000</option>
 		<option value = "0030">0030</option>
 		<option value = "0100">0100</option>
@@ -84,7 +84,7 @@ $conn->close();
 		
 		select end time
 		
-		<select>
+		<select name="to">
 		<option value = "0000">0000</option>
 		<option value = "0030">0030</option>
 		<option value = "0100">0100</option>
