@@ -189,13 +189,13 @@ $conn->close();
 
 			var maxDown = 0;
 			for(var i=0; i<len; i++){
-			    if (data[i]["mean"] > maxDown){
-			        maxDown = data[i]["mean"];
+			    if (data[i]["down"] > maxDown){
+			        maxDown = data[i]["down"];
 			    }
 			}
 
 			for(var i=0; i<len; i++){
-				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 20, data[i]["mean"], maxDown);
+				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 20, data[i]["down"], maxDown);
 			}
 		}
 
