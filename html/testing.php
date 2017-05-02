@@ -201,7 +201,7 @@ $conn->close();
 
             var ratio = currDown / maxDown;
 
-			grad.addColorStop(0, rgbToHex(255 * (1 - ratio), 255 * ratio, 0);
+			grad.addColorStop(0, rgbToHex(255 * (1 - ratio), 255 * ratio, 0));
 			grad.addColorStop(1, "transparent");
 
 			canvas.fillStyle = grad;
