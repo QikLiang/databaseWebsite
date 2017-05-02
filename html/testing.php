@@ -27,12 +27,13 @@ if ( !preg_match('/\d{4}/',$from) || !preg_match('/\d{4}/',$to) ){
 
 $sql = <<<END
 select l.building, xCoord, yCoord, avg(upload) as up,
-		avg(download) as down, avg(ping) as ping
+		avg(download) as down, avg(ping) as ping, (down + up)/2 as mean
 	from location l left join performance p
 	on l.building = p.building
 	where hour(time)*100 + minute(time) <= $to
 		and hour(time)*100 + minute(time) >= $from
-	group by l.building;
+		group by l.building
+	order by mean desc;
 END;
 
 $query = $conn->query($sql);
@@ -181,10 +182,12 @@ $conn->close();
 		map.src = "./DBProject_Background.png";
 
 		function draw(canvas){
+			//use largest value to scale the rest of the values
+			var scale = data[0]["mean"];
 			var data = JSON.parse('<?=json_encode($data)?>');
 			var len = data.length;
 			for(var i=0; i<len; i++){
-				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 20);
+				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], data[i]["mean"]*50/scale);
 			}
 		}
 
