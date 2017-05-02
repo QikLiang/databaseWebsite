@@ -186,8 +186,8 @@ $conn->close();
 		function draw(canvas){
 			var data = JSON.parse('<?=json_encode($data)?>');
 			var len = data.length;
-			var maxDown = 0;
 
+			var maxDown = 0;
 			for(var i=0; i<len; i++){
 			    if (data[i]["down"] > maxDown){
 			        maxDown = data[i]["down"];
@@ -204,7 +204,7 @@ $conn->close();
 
             var ratio = currDown / maxDown;
 
-			grad.addColorStop(0, rgbToHex(255 * (1 - ratio), 255 * ratio, 0));
+			grad.addColorStop(0, "green");
 			grad.addColorStop(1, "transparent");
 
 			canvas.fillStyle = grad;
