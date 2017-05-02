@@ -195,9 +195,7 @@ $conn->close();
 			grad.addColorStop(1, "transparent");
 
 			canvas.fillStyle = grad;
-			canvas.arc(x, y, radius, 0, 2*Math.PI);
-			canvas.fill();
-
+			canvas.fillRect(x - radius, y - radius, x + radius, y + radius);
 		}
 	</script>
 
