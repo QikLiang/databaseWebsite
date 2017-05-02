@@ -176,7 +176,6 @@ $conn->close();
 		var map = new Image();
 		map.onload = function(){
 			canvas.drawImage(map, 0, 0, 2000, 1000);
-			drawCircle(canvas, 500, 500, 20);
 			draw(canvas);
 		}
 		map.src = "./DBProject_Background.png";
