@@ -177,11 +177,10 @@ $conn->close();
 		map.src = "./DBProject_Background.png";
 
 		function draw(canvas){
-			var body = document.getElementsByTagName("body")[0];
 			var data = JSON.parse('<?=json_encode($data)?>');
 			var len = data.length;
 			for(var i=0; i<len; i++){
-				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 20);
+				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 30);
 			}
 		}
 
@@ -191,7 +190,7 @@ $conn->close();
 			grad.addColorStop(1, "transparent");
 
 			canvas.fillStyle = grad;
-			canvas.arc(500, 500, radius, 0, 2*Math.PI);
+			canvas.arc(x, y, radius, 0, 2*Math.PI);
 			canvas.fill();
 
 		}
