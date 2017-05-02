@@ -20,8 +20,12 @@ function sanitize($text){
 $from = sanitize($_GET["from"]);
 $to = sanitize($_GET["to"]);
 $sql = "";
-if ( preg_match('/\d{4}/',$from) && preg_match('/\d{4}/',$to) ){
-	$sql = <<<END
+if ( !preg_match('/\d{4}/',$from) || !preg_match('/\d{4}/',$to) ){
+	$from = 0;
+	$to = 2400;
+}
+
+$sql = <<<END
 select l.building, l.room, xCoord, yCoord, avg(upload) as up,
 		avg(download) as down, avg(ping) as ping
 	from location l left join performance p
@@ -30,9 +34,8 @@ select l.building, l.room, xCoord, yCoord, avg(upload) as up,
 		and hour(time)*100 + minute(time) >= $from
 	group by l.building, l.room;
 END;
-}
 
-$query = $conn->query('select * from location');
+$query = $conn->query(sql);
 $data = [];
 while($row = $query->fetch_assoc()){
 	array_push($data, $row);
