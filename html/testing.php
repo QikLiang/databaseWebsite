@@ -195,7 +195,7 @@ $conn->close();
 			}
 
 			for(var i=0; i<len; i++){
-				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 20, data[i]["down"], maxDown);
+				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 50, data[i]["down"], maxDown);
 			}
 		}
 
