@@ -33,11 +33,13 @@ select *, (down + up)/2 as mean from(
 	where hour(time)*100 + minute(time) <= $to
 		and hour(time)*100 + minute(time) >= $from
 	group by l.building
-)
+)a
 order by mean desc;
 END;
 
-$query = $conn->query($sql);
+$query = $conn->query("select * from location;");
+//$query = $conn->query($sql);
+echo $sql;
 $data = [];
 while($row = $query->fetch_assoc()){
 	array_push($data, $row);
