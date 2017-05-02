@@ -113,7 +113,7 @@ $conn->close();
 
 		select end time
 
-		<select name="to">
+		<select name="to" id="to">
 		<option value = "0000">0000</option>
 		<option value = "0030">0030</option>
 		<option value = "0100">0100</option>
@@ -175,6 +175,10 @@ $conn->close();
 	</form>
 
 	<script charset="utf-8">
+		//select defaults for drop downs
+		document.getElementById('from').value = "<?php echo $from; ?>";
+		document.getElementById('to').value = "<?php echo $to; ?>";
+
 		var canvas = document.getElementById("graphics").getContext("2d");
 		var map = new Image();
 		map.onload = function(){
