@@ -21,6 +21,15 @@ $from = sanitize($_GET["from"]);
 $to = sanitize($_GET["to"]);
 $sql = "";
 if ( preg_match('/\d{4}/',$from) && preg_match('/\d{4}/',$to) ){
+	$sql = <<<END
+select l.building, l.room, xCoord, yCoord, avg(upload) as up,
+		avg(download) as down, avg(ping) as ping
+	from location l left join performance p
+	on l.building = p.building and l.room = p.room
+	where hour(time)*100 + minute(time) <= $to
+		and hour(time)*100 + minute(time) >= $from
+	group by l.building, l.room;
+END;
 }
 
 $query = $conn->query('select * from location');
@@ -41,8 +50,8 @@ $conn->close();
 	<canvas id="graphics" width="2000" height="1000"></canvas>
 
 	<form method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-	
-	Select start time:  
+
+	Select start time:
 	<select name="from">
 		<option value = "0000">0000</option>
 		<option value = "0030">0030</option>
@@ -94,9 +103,9 @@ $conn->close();
 		<option value = "2330">2330</option>
 
 		</select>
-		
+
 		select end time
-		
+
 		<select name="to">
 		<option value = "0000">0000</option>
 		<option value = "0030">0030</option>
@@ -148,13 +157,13 @@ $conn->close();
 		<option value = "2330">2330</option>
 
 		</select>
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
 	<input type="submit" name="submit" value="Submit">
 	</form>
 
@@ -163,15 +172,17 @@ $conn->close();
 		var map = new Image();
 		map.onload = function(){
 			canvas.drawImage(map, 0, 0, 2000, 1000);
-			drawCircle(canvas, 500, 500, 200);
+			draw();
 		}
 		map.src = "./DBProject_Background.png";
 
-		var body = document.getElementsByTagName("body")[0];
-		var data = JSON.parse('<?=json_encode($data)?>');
-		var len = data.length;
-		for(var i=0; i<len; i++){
-			
+		function draw(){
+			var body = document.getElementsByTagName("body")[0];
+			var data = JSON.parse('<?=json_encode($data)?>');
+			var len = data.length;
+			for(var i=0; i<len; i++){
+				drawCircle(data[i]["xCoord"], data[i]["yCoord"], 20);
+			}
 		}
 
 		function drawCircle(canvas, x, y, radius){
@@ -185,7 +196,7 @@ $conn->close();
 
 		}
 	</script>
-	
-	
+
+
 </body>
 </html>
