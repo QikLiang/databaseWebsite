@@ -26,16 +26,17 @@ if ( !preg_match('/\d{4}/',$from) || !preg_match('/\d{4}/',$to) ){
 }
 
 $sql = <<<END
-select l.building, l.room, xCoord, yCoord, avg(upload) as up,
-		avg(download) as down, avg(ping) as ping
+select l.building, xCoord, yCoord, avg(upload) as up,
+		avg(download) as down, avg(ping) as ping, (down + up)/2 as mean
 	from location l left join performance p
-	on l.building = p.building and l.room = p.room
+	on l.building = p.building
 	where hour(time)*100 + minute(time) <= $to
 		and hour(time)*100 + minute(time) >= $from
-	group by l.building, l.room;
+		group by l.building
+	order by mean desc;
 END;
 
-$query = $conn->query(sql);
+$query = $conn->query($sql);
 $data = [];
 while($row = $query->fetch_assoc()){
 	array_push($data, $row);
