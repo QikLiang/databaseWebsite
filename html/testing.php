@@ -27,7 +27,7 @@ if ( !preg_match('/\d{4}/',$from) || !preg_match('/\d{4}/',$to) ){
 $sql = <<<END
 select *, (down + up)/2 as mean from(
 	select l.building, xCoord, yCoord, avg(upload) as up,
-		avg(download) as down, avg(ping) as ping, (down + up)/2 as mean
+		avg(download) as down, avg(ping) as ping
 	from location l left join performance p
 	on l.building = p.building
 	where hour(time)*100 + minute(time) <= $to
