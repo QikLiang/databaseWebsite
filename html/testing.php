@@ -187,7 +187,7 @@ $conn->close();
 
 		function drawCircle(canvas, x, y, radius){
 			var grad = canvas.createRadialGradient(x, y, 0, x, y, radius);
-			grad.addColorStop(0, "red");
+			grad.addColorStop(0, "green");
 			grad.addColorStop(1, "transparent");
 
 			canvas.fillStyle = grad;
