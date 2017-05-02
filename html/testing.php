@@ -196,7 +196,6 @@ $conn->close();
 
 			canvas.fillStyle = grad;
 			canvas.fillRect(x - radius, y - radius, x + radius, y + radius);
-			var i = 1;
 		}
 	</script>
 
