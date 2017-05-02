@@ -189,7 +189,7 @@ $conn->close();
 			var grad = canvas.createRadialGradient(x, y, 0, x, y, radius);
 
 			grad.addColorStop(0, "green");
-			grad.addColorStop(1, "white");
+			grad.addColorStop(1, "transparent");
 
 			canvas.fillStyle = grad;
 			canvas.arc(x, y, radius, 0, 2*Math.PI);
