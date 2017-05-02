@@ -200,14 +200,14 @@ $conn->close();
 			}
 
 			for(var i=0; i<len; i++){
-				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 50, data[i]["down"], maxDown, maxDown - minDown);
+				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 100, data[i]["down"], maxDown, maxDown - minDown);
 			}
 		}
 
 		function drawCircle(canvas, x, y, radius, currDown, maxDown, range){
-			var grad = canvas.createRadialGradient(x, y, 0, x, y, radius);
+			var ratio = 1 - (maxDown - currDown) / range;
 
-            var ratio = 1 - (maxDown - currDown) / range;
+			var grad = canvas.createRadialGradient(x, y, 0, x, y, parseInt(radius * ratio));
 
             var red = 255 * (1 - ratio);
             var green = 255 * ratio;
