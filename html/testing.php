@@ -39,7 +39,7 @@ END;
 
 //$query = $conn->query("select * from location;");
 $query = $conn->query($sql);
-echo $sql;
+//echo $sql;
 $data = [];
 while($row = $query->fetch_assoc()){
 	array_push($data, $row);
