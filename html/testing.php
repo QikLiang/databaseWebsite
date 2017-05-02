@@ -37,8 +37,8 @@ select *, (down + up)/2 as mean from(
 order by mean desc;
 END;
 
-$query = $conn->query("select * from location;");
-//$query = $conn->query($sql);
+//$query = $conn->query("select * from location;");
+$query = $conn->query($sql);
 echo $sql;
 $data = [];
 while($row = $query->fetch_assoc()){
