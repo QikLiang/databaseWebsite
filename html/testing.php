@@ -19,24 +19,27 @@ function sanitize($text){
 
 $from = sanitize($_GET["from"]);
 $to = sanitize($_GET["to"]);
-$sql = "";
 if ( !preg_match('/\d{4}/',$from) || !preg_match('/\d{4}/',$to) ){
 	$from = 0;
 	$to = 2400;
 }
 
 $sql = <<<END
-select l.building, xCoord, yCoord, avg(upload) as up,
+select *, (down + up)/2 as mean from(
+	select l.building, xCoord, yCoord, avg(upload) as up,
 		avg(download) as down, avg(ping) as ping, (down + up)/2 as mean
 	from location l left join performance p
 	on l.building = p.building
 	where hour(time)*100 + minute(time) <= $to
 		and hour(time)*100 + minute(time) >= $from
-		group by l.building
-	order by mean desc;
+	group by l.building
+)a
+order by mean desc;
 END;
 
-$query = $conn->query($sql);
+$query = $conn->query("select * from location;");
+//$query = $conn->query($sql);
+echo $sql;
 $data = [];
 while($row = $query->fetch_assoc()){
 	array_push($data, $row);
