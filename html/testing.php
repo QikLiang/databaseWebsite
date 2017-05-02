@@ -183,20 +183,39 @@ $conn->close();
 		function draw(canvas){
 			var data = JSON.parse('<?=json_encode($data)?>');
 			var len = data.length;
+			var maxDown = 0;
+
 			for(var i=0; i<len; i++){
-				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 20);
+			    if (data[i]["down"] > maxDown){
+			        maxDown = data[i]["down"];
+			    }
+			}
+
+			for(var i=0; i<len; i++){
+				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 20, data[i]["down"], maxDown);
 			}
 		}
 
-		function drawCircle(canvas, x, y, radius, downSpeed){
+		function drawCircle(canvas, x, y, radius, currDown, maxDown){
 			var grad = canvas.createRadialGradient(x, y, 0, x, y, radius);
 
-			grad.addColorStop(0, "green");
+            var ratio = currDown / maxDown;
+
+			grad.addColorStop(0, rgbToHex(255 * (1 - ratio), 255 * ratio, 0);
 			grad.addColorStop(1, "transparent");
 
 			canvas.fillStyle = grad;
 			canvas.fillRect(x - radius, y - radius, x + radius, y + radius);
 		}
+
+		function componentToHex(c) {
+            var hex = c.toString(16);
+            return hex.length == 1 ? "0" + hex : hex;
+        }
+
+        function rgbToHex(r, g, b) {
+            return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
 	</script>
 
 
