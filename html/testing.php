@@ -175,12 +175,12 @@ $conn->close();
 		var map = new Image();
 		map.onload = function(){
 			canvas.drawImage(map, 0, 0, 2000, 1000);
+			drawCircle(canvas, 500, 500, 20);
 			draw(canvas);
 		}
 		map.src = "./DBProject_Background.png";
 
 		function draw(canvas){
-			var body = document.getElementsByTagName("body")[0];
 			var data = JSON.parse('<?=json_encode($data)?>');
 			var len = data.length;
 			for(var i=0; i<len; i++){
@@ -188,13 +188,14 @@ $conn->close();
 			}
 		}
 
-		function drawCircle(canvas, x, y, radius){
+		function drawCircle(canvas, x, y, radius, downSpeed){
 			var grad = canvas.createRadialGradient(x, y, 0, x, y, radius);
+
 			grad.addColorStop(0, "green");
 			grad.addColorStop(1, "transparent");
 
 			canvas.fillStyle = grad;
-			canvas.arc(500, 500, radius, 0, 2*Math.PI);
+			canvas.arc(x, y, radius, 0, 2*Math.PI);
 			canvas.fill();
 
 		}
