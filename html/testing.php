@@ -188,21 +188,26 @@ $conn->close();
 			var len = data.length;
 
 			var maxDown = 0;
+			var minDown = 9999999999;
 			for(var i=0; i<len; i++){
 			    if (data[i]["down"] > maxDown){
 			        maxDown = data[i]["down"];
 			    }
+
+			    if (data[i]["down"] < minDown){
+			        minDown = data[i]["down"];
+			    }
 			}
 
 			for(var i=0; i<len; i++){
-				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 50, data[i]["down"], maxDown);
+				drawCircle(canvas, data[i]["xCoord"], data[i]["yCoord"], 50, data[i]["down"], maxDown, maxDown - minDown);
 			}
 		}
 
-		function drawCircle(canvas, x, y, radius, currDown, maxDown){
+		function drawCircle(canvas, x, y, radius, currDown, maxDown, range){
 			var grad = canvas.createRadialGradient(x, y, 0, x, y, radius);
 
-            var ratio = currDown / maxDown;
+            var ratio = 1 - (maxDown - currDown) / range;
 
             var red = 255 * (1 - ratio);
             var green = 255 * ratio;
