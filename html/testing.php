@@ -172,11 +172,11 @@ $conn->close();
 		var map = new Image();
 		map.onload = function(){
 			canvas.drawImage(map, 0, 0, 2000, 1000);
-			draw();
+			draw(canvas);
 		}
 		map.src = "./DBProject_Background.png";
 
-		function draw(){
+		function draw(canvas){
 			var body = document.getElementsByTagName("body")[0];
 			var data = JSON.parse('<?=json_encode($data)?>');
 			var len = data.length;
